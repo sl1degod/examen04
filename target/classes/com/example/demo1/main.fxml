@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controllers.Main">
+<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controllers.Main">
    <children>
-      <TableView fx:id="tabelView" layoutX="101.0" layoutY="49.0" prefHeight="272.0" prefWidth="398.0">
+      <TableView fx:id="tabelView" layoutY="70.0" prefHeight="430.0" prefWidth="700.0">
         <columns>
-          <TableColumn fx:id="firstname" prefWidth="87.0" text="C1" />
-          <TableColumn fx:id="lastname" prefWidth="115.0" text="C2" />
-            <TableColumn fx:id="login" prefWidth="102.0" text="C2" />
-            <TableColumn fx:id="password" prefWidth="93.0" text="C2" />
+          <TableColumn fx:id="firstname" prefWidth="288.0" text="Название" />
+          <TableColumn fx:id="lastname" prefWidth="84.0" text="Цена" />
+            <TableColumn fx:id="login" prefWidth="174.0" text="Период" />
+            <TableColumn fx:id="password" prefWidth="153.0" text="Куратор" />
         </columns>
       </TableView>
+      <Label layoutX="263.0" layoutY="21.0" text="Список курсов">
+         <font>
+            <Font name="Comic Sans MS" size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

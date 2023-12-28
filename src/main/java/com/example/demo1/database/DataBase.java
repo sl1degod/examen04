@@ -1,7 +1,7 @@
 package com.example.demo1.database;
 
 
-import com.example.demo1.models.User;
+import com.example.demo1.models.Courses;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
@@ -10,7 +10,7 @@ public class DataBase {
         Connection connection = null;
         try {
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + "educraft_db", "postgres", "123");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + "examen_db", "postgres", "123");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -63,16 +63,16 @@ public class DataBase {
 
     }
 
-    public ObservableList<User> getAllUsers() {
-        ObservableList<User> users = FXCollections.observableArrayList();
+    public ObservableList<Courses> getAllCourses() {
+        ObservableList<Courses> users = FXCollections.observableArrayList();
         try {
-            ResultSet resultSet = connect_to_db().createStatement().executeQuery("select * from users");
+            ResultSet resultSet = connect_to_db().createStatement().executeQuery("select * from courses");
             while (resultSet.next()) {
-                users.add(new User(
-                        resultSet.getString("firstName"),
-                        resultSet.getString("lastName"),
-                        resultSet.getString("login"),
-                        resultSet.getString("password")
+                users.add(new Courses(
+                        resultSet.getString("name"),
+                        resultSet.getString("price"),
+                        resultSet.getString("period_education"),
+                        resultSet.getString("curator")
                 ));
             }
             return users;
@@ -103,9 +103,9 @@ public class DataBase {
         }
     }
 
-    public void createUser(String firstName, String secondName, String login, String password) {
+    public void createUser(String firstName, String secondName, String lastName, String email, String login, String password) {
         try {
-            String query = String.format("insert into users (firstName, lastName, login, password) VALUES ('%s', '%s', '%s', '%s')",firstName, secondName, login, password);
+            String query = String.format("insert into users (firstName, secondName, lastName, email, login, password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",firstName, secondName, lastName, email, login, password);
             connect_to_db().createStatement().executeUpdate(query);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
