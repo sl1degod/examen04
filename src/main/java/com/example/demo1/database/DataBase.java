@@ -56,6 +56,7 @@ public class DataBase {
             Statement statement = connect_to_db().createStatement();
             statement.executeUpdate(query);
             System.out.println("Data updated");
+            //1231
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
